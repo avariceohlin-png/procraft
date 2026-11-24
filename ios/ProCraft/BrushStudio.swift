@@ -3,9 +3,9 @@ import SwiftUI
 /// The space the studio's menus and the rows they hang from are placed in: the whole screen.
 let studioSpace = "studio"
 
-private let settingsWidth: CGFloat = 323
-private let padHeight: CGFloat = 510
-private let tabsWidth: CGFloat = 81
+private let settingsWidth: CGFloat = 280
+private let padHeight: CGFloat = 260
+private let tabsWidth: CGFloat = 56
 
 /// The studio's colours, dark or as the light interface has them.
 enum StudioInk {
@@ -181,22 +181,22 @@ private struct StudioRail: View {
         VStack(alignment: .leading, spacing: 3) {
             if studio.dual {
                 StudioParts(studio: studio, ui: ui, width: partRailWidth, landscape: false)
-                    .padding(.leading, 8)
+                    .padding(.leading, 6)
             }
             ForEach(shownTabs(studio), id: \.index) { i, tab in
                 let on = settings.studioTab == i
                 ZStack {
                     Capsule().fill(on ? Pc.accent : Color.clear)
                     // drawn in a 50 frame, fitted to the tab's own size
-                    PcIconView(tab.icon, size: tab.iconSize, color: on ? .white : StudioInk.tabIcon)
+                    PcIconView(tab.icon, size: tab.iconSize * 0.85, color: on ? .white : StudioInk.tabIcon)
                 }
-                .frame(width: 65, height: 45)
+                .frame(width: 44, height: 38)
                 .contentShape(Rectangle())
                 .onTapGesture { settings.studioTab = i }
-                .padding(.leading, 8)
+                .padding(.leading, 6)
             }
         }
-        .padding(.top, 46)
+        .padding(.top, 20)
         .frame(width: tabsWidth, alignment: .leading)
         .frame(maxHeight: .infinity, alignment: .top)
         .background(StudioInk.tabs)
@@ -260,7 +260,7 @@ private struct StudioPagesCard: View {
 
 /// A dual brush's two parts as the pages' column heads them: each this wide (upright, or on the
 /// card turned sideways), this tall and this far apart, and the room they take before the pages.
-private let partRailWidth: CGFloat = 57
+private let partRailWidth: CGFloat = 44
 private let partListWidth: CGFloat = 288
 private let partHeight: CGFloat = 61
 private let partGap: CGFloat = 3
@@ -498,16 +498,16 @@ private struct StudioPad: View {
                 StudioInk.padBehind
                     .allowsHitTesting(false)
             }
-            HStack(spacing: 6) {
-                PcIconView(PcIcons.studioPad, size: 26, color: StudioInk.buttonInk)
+            HStack(spacing: 4) {
+                PcIconView(PcIcons.studioPad, size: 22, color: StudioInk.buttonInk)
                 Text(verbatim: "Drawing Pad")
-                    .font(.system(size: 16, weight: .semibold))
+                    .font(.system(size: 14, weight: .semibold))
                     .foregroundStyle(StudioInk.buttonInk)
                     .lineLimit(1)
             }
-            .padding(.leading, 9)
-            .padding(.trailing, 13)
-            .frame(height: 43)
+            .padding(.leading, 8)
+            .padding(.trailing, 10)
+            .frame(height: 38)
             .background(Capsule().fill(StudioInk.button))
             .overlay(Capsule().strokeBorder(StudioInk.buttonEdge, lineWidth: 1))
             .overlay {
@@ -520,38 +520,38 @@ private struct StudioPad: View {
                         }
                 }
             }
-            .offset(x: 21, y: 21)
-            HStack(spacing: 13) {
+            .offset(x: 10, y: 12)
+            HStack(spacing: 6) {
                 // a plugin's: the brush set at random
                 if studio.randomises {
                     Text(verbatim: "Randomise")
-                        .font(.system(size: 17))
+                        .font(.system(size: 14))
                         .foregroundStyle(StudioInk.buttonInk)
                         .lineLimit(1)
-                        .padding(.horizontal, 16)
-                        .frame(height: 43)
+                        .padding(.horizontal, 10)
+                        .frame(height: 38)
                         .background(Capsule().fill(StudioInk.button))
                         .overlay(Capsule().strokeBorder(StudioInk.buttonEdge, lineWidth: 1))
                         .contentShape(Capsule())
                         .onTapGesture { studio.randomise() }
                 }
                 Text(verbatim: "Cancel")
-                    .font(.system(size: 17))
+                    .font(.system(size: 15))
                     .foregroundStyle(StudioInk.buttonInk)
                     .lineLimit(1)
-                    .frame(width: 73, height: 43)
+                    .frame(width: 64, height: 38)
                     .background(Capsule().fill(StudioInk.button))
                     .overlay(Capsule().strokeBorder(StudioInk.buttonEdge, lineWidth: 1))
                     .contentShape(Capsule())
                     .onTapGesture { studio.close(keep: false) }
-                PcIconView(PcIcons.doneTick, size: 40, color: .white)
-                    .frame(width: 44, height: 44)
+                PcIconView(PcIcons.doneTick, size: 34, color: .white)
+                    .frame(width: 38, height: 38)
                     .background(Circle().fill(StudioInk.done))
                     .contentShape(Circle())
                     .onTapGesture { studio.close(keep: true) }
             }
-            .padding(.top, 20)
-            .padding(.trailing, 20)
+            .padding(.top, 12)
+            .padding(.trailing, 10)
             .frame(maxWidth: .infinity, alignment: .trailing)
         }
         .clipped()
@@ -713,7 +713,7 @@ private struct StudioSettings: View {
                         .id(i)
                     }
                 }
-                .padding(.horizontal, 20)
+                .padding(.horizontal, 14)
                 .padding(.bottom, 77)
             }
             .scrollDisabled(ui.sliding)
