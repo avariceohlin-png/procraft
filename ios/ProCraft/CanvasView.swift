@@ -87,14 +87,15 @@ final class CanvasView: UIView {
         cursor.autoresizingMask = [.flexibleWidth, .flexibleHeight]
         addSubview(cursor)
         // the Pencil held over the glass, and a trackpad's or mouse's pointer, each on its own
-        let pencilHover = UIHoverGestureRecognizer(target: self, action: #selector(pencilHovered(_:)))
-        pencilHover.allowedTouchTypes = [NSNumber(value: UITouch.TouchType.pencil.rawValue)]
-        addGestureRecognizer(pencilHover)
-        let pointerHover = UIHoverGestureRecognizer(target: self, action: #selector(pointerHovered(_:)))
-        pointerHover.allowedTouchTypes = [NSNumber(value: UITouch.TouchType.indirectPointer.rawValue)]
-        addGestureRecognizer(pointerHover)
+       // the Pencil held over the glass, and a trackpad's or mouse's pointer, each on its own
+        // let pencilHover = UIHoverGestureRecognizer(target: self, action: #selector(pencilHovered(_:)))
+        // pencilHover.allowedTouchTypes = [NSNumber(value: UITouch.TouchType.pencil.rawValue)]
+        // addGestureRecognizer(pencilHover)
+        // let pointerHover = UIHoverGestureRecognizer(target: self, action: #selector(pointerHovered(_:)))
+        // pointerHover.allowedTouchTypes = [NSNumber(value: UITouch.TouchType.indirectPointer.rawValue)]
+        // addGestureRecognizer(pointerHover)
         // what lies over the canvas (a side slider's notch) is felt through it too
-        PencilFeedback.canvas = feedback
+        // PencilFeedback.canvas = feedback
     }
 
     @available(*, unavailable)
