@@ -26,7 +26,7 @@ jobs:
   ipa:
     name: iPadOS (unsigned IPA)
     if: ${{ !github.event.repository.private }}
-    runs-on: macos-15-intel
+    runs-on: macos-26
     env:
       DIST: ${{ github.workspace }}/dist
     steps:
@@ -69,7 +69,7 @@ jobs:
   metal:
     name: Plugin filters on Metal
     if: ${{ !github.event.repository.private }}
-    runs-on: macos-15-intel
+    runs-on: macos-26
     
     timeout-minutes: 40
     steps:
@@ -132,7 +132,7 @@ jobs:
   screens:
     name: iPad screens (simulator)
     if: ${{ !github.event.repository.private }}
-    runs-on: macos-15-intel
+    runs-on: macos-26
     steps:
       - uses: actions/checkout@v4
 
