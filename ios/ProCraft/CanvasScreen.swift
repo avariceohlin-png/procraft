@@ -788,9 +788,9 @@ final class CanvasViewController: UIViewController, UIPencilInteractionDelegate 
         canvas.afterTouches = { [weak self] ended in self?.model.layerOpacityTouched(ended: ended) }
         canvas.ringAt = { [weak self] in self?.model.showLiquifyRing($0) }
         canvas.tapAssistance = SystemSettings.tapAssistance
-        let pencil = UIPencilInteraction()
-        pencil.delegate = self
-        canvas.addInteraction(pencil)
+       // let pencil = UIPencilInteraction()
+// pencil.delegate = self
+// canvas.addInteraction(pencil)
         // Reduce Motion: a dropped colour's fill shows at once rather than spreading in
         session.setReduceMotion(reduce: UIAccessibility.isReduceMotionEnabled)
         observers.append(NotificationCenter.default.addObserver(
